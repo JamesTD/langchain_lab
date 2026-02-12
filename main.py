@@ -1,9 +1,13 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
+import os
 
 #https://huggingface.co/stepfun-ai/Step-3.5-Flash
 #https://openrouter.ai/settings/keys?utm_source=signup-success
+
+load_dotenv
 
 def llm_model(prompt_txt, params=None):
 
@@ -16,9 +20,9 @@ def llm_model(prompt_txt, params=None):
         default_params.update(params)
 
     llm = ChatOpenAI(
-        model="stepfun/step-3.5-flash:free",
-        openai_api_base="https://openrouter.ai/api/v1",
-        openai_api_key="",
+        model = "stepfun/step-3.5-flash:free",
+        openai_api_base = "https://openrouter.ai/api/v1",
+        openai_api_key = os.getenv("OPENAI_API_KEY"),
         temperature=default_params["temperature"],
         max_tokens=default_params["max_tokens"],
     )
