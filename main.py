@@ -1,16 +1,17 @@
+import os
+from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from dotenv import load_dotenv
-import os
 
 #https://huggingface.co/stepfun-ai/Step-3.5-Flash
 #https://openrouter.ai/settings/keys?utm_source=signup-success
 
 load_dotenv()
 
-def llm_model(prompt_txt, params=None):
-
+def llm_model(prompt_txt: str, params: dict | None = None) -> str:
+    """Send a prompt to the LLM and return the response."""
+    
     default_params = {
         "max_tokens": 256,
         "temperature": 0.5,
@@ -38,6 +39,7 @@ def llm_model(prompt_txt, params=None):
     return response
     
 
-response = llm_model("Where is your buried treasure?")
-print(response)
+if __name__ == "__main__":
+    response = llm_model("Where is your buried treasure?")
+    print(response)
 
