@@ -7,7 +7,7 @@ import os
 #https://huggingface.co/stepfun-ai/Step-3.5-Flash
 #https://openrouter.ai/settings/keys?utm_source=signup-success
 
-load_dotenv
+load_dotenv()
 
 def llm_model(prompt_txt, params=None):
 
